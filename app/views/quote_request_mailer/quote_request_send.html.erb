@@ -4,22 +4,22 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-      <div style="background-color: #180124; height: 100px">
-        <h1 style="text-align:center; font-size:2.2em; color: white; padding: 25px;">Kwot'z </h1>
+      <div style="background-color: #17c1e8; height: 100px">
+        <h1 style="text-align:center; font-size:2.2em; color: white; padding: 25px;">Kwot'z - demande de prix</h1>
       </div>
       <div style="padding: 70px 20px 90px 20px;">
         <h2>Bonjour!</h2>
-        <p>Vous avez reçu une nouvelle demande de prix de <%= @quote_request.user_profile.first_name %> <%= @quote_request.user_profile.last_name %></p>
+        <h4>Vous avez reçu une nouvelle demande de prix de <%= @quote_request.user_profile.first_name %> <%= @quote_request.user_profile.last_name %>, société <%= @quote_request.user_profile.company %>.</h4>
         <%consultation_link = "#{Rails.application.credentials.mailer[:front_url]}consultation/#{@quote_request.id}"%>
-        <p>Pour y accéder, veuillez cliquer sur le lien suivant: </p>
+        <p>Pour accéder aux détails de cette demande de prix et transmettre votre devis, veuillez cliquer sur le lien ci-dessous: </p>
         <%= link_to consultation_link do %>
-          <button class="new-password-button">
-            Visiter la consultation
-          </button>
+          <p style="text-decoration: underline; font-weight: bold; color: #344767;">
+            Accéder à la demande de prix
+          </p>
         <% end %>
       </div>
       <footer style="height: 60px; background-color: transparent; text-align: center;">
-        <p  style="text-muted">Copyright © Kwot'z 2022</p>
+        <p>Cet email vous a été envoyé avec l'application Kwot'z.</p>
       </footer>
   </body>
 </html>

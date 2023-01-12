@@ -4,27 +4,26 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-      <div style="background-color: #180124; height: 100px">
+      <div style="background-color: #17c1e8; height: 100px">
         <h1 style="text-align:center; font-size:2.2em; color: white; padding: 25px;">Kwot'z </h1>
       </div>
       <div style="padding: 70px 20px 90px 20px;">
         <h2>Bonjour <%= @email %>!</h2>
-        <p>Bienvenue sur Kwot'z </p>
+        <h4>Bienvenue sur Kwot'z </h4>
 
-        <p>Cliquez sur le bouton pour confimer vôtre inscription:</p>
+        <p>Pour confirmer votre incrption, veuillez cliquez sur le lien ci-dessous.</p>
+        <p style="font-style: italic;">Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer cet e-mail.</p>
 
         <% host_url = Rails.application.credentials.mailer[:front_url]%>
 
         <% confirmation_link = "#{host_url}confirmation?confirmation_token=#{@token}" %>
         
         <%= link_to confirmation_link do %>
-          <button class="new-password-button">
-            Confirmer mon inscription
-          </button>
+          <p style="text-decoration: underline; font-weight: bold; color: #344767;">Confirmer mon inscription</p>
         <% end %>
       </div>
       <footer style="height: 60px; background-color: transparent; text-align: center;">
-        <p  style="text-muted">Copyright © Kwot'z 2022</p>
+        <p  style="text-muted">L'équipe Kwot'z.</p>
       </footer>
   </body>
 </html>
