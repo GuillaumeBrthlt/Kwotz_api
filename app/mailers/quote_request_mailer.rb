@@ -1,5 +1,5 @@
 class QuoteRequestMailer < ApplicationMailer
-  default from: "bertholetguillaume@gmail.com" 
+  default from: "support@kwot-z.fr" 
   
   def quote_request_send(quote_request)
     @quote_request = quote_request
