@@ -3,11 +3,11 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body>
+  <body style='background-color: #FFFFFF'>
       <div style="background-color: #17c1e8; height: 100px">
         <h1 style="text-align:center; font-size:2.2em; color: white; padding: 25px;">Kwot'z - demande de prix</h1>
       </div>
-      <div style="padding: 70px 20px 90px 20px;">
+      <div style="padding: 70px 20px 90px 20px; color: black">
         <h2>Bonjour!</h2>
         <h4>Vous avez reçu une nouvelle demande de prix de <%= @quote_request.user_profile.first_name %> <%= @quote_request.user_profile.last_name %>, société <%= @quote_request.user_profile.company %>.</h4>
         <%consultation_link = "#{Rails.application.credentials.mailer[:front_url]}consultation/#{@quote_request.id}"%>
