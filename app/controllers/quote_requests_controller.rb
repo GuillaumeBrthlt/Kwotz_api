@@ -55,7 +55,7 @@ class QuoteRequestsController < ApplicationController
     end
 
     def quote_request_update_params
-      default = { response_status: true }
-      params.require(:quote_request).permit(:email, :project_id, :response_comment, document: []).reverse_merge(default)
+      default = { response_status: true, received_at: Time.now }
+      params.require(:quote_request).permit(:read, :email, :project_id, :response_comment, document: []).reverse_merge(default)
     end
 end

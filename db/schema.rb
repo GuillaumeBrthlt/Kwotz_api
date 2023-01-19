@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_18_145743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,6 +91,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
     t.datetime "updated_at", null: false
     t.boolean "response_status", default: false
     t.text "response_comment"
+    t.boolean "read", default: false
+    t.datetime "received_at"
     t.index ["project_id"], name: "index_quote_requests_on_project_id"
   end
 
@@ -101,6 +103,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone"
+    t.string "adress"
+    t.string "city"
+    t.string "zipcode"
     t.index ["supplier_id"], name: "index_supplier_contacts_on_supplier_id"
   end
 

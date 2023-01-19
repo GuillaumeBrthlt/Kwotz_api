@@ -17,7 +17,7 @@ class QuoteRequest < ApplicationRecord
   end
 
   def mail_document
-    if self.response_status
+    if self.response_status && !self.read
       user = self.user
       QuoteRequestMailer.document_attached_send(user, self).deliver_now
     end
