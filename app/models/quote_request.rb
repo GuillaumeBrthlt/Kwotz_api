@@ -4,6 +4,7 @@ class QuoteRequest < ApplicationRecord
   has_one :user_profile, through: :user
   has_many_attached :document, dependent: :delete_all
   has_many :cold_rooms, through: :project
+  has_many :spare_parts, through: :project
   after_create :send_mail
   after_update :mail_document
   after_create :update_project

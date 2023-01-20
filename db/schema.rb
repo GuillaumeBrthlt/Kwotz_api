@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_18_145743) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_100120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_145743) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "entry_temperature"
     t.index ["project_id"], name: "index_cold_rooms_on_project_id"
   end
 
@@ -94,6 +95,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_145743) do
     t.boolean "read", default: false
     t.datetime "received_at"
     t.index ["project_id"], name: "index_quote_requests_on_project_id"
+  end
+
+  create_table "spare_parts", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "brand"
+    t.string "name"
+    t.string "reference"
+    t.integer "quantity"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_spare_parts_on_project_id"
   end
 
   create_table "supplier_contacts", force: :cascade do |t|
@@ -165,6 +178,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_145743) do
   add_foreign_key "projects", "supplier_contacts"
   add_foreign_key "projects", "users"
   add_foreign_key "quote_requests", "projects"
+  add_foreign_key "spare_parts", "projects"
   add_foreign_key "supplier_contacts", "suppliers"
   add_foreign_key "suppliers", "users"
   add_foreign_key "user_profiles", "users"
