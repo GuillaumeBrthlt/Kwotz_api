@@ -4,4 +4,5 @@ class Project < ApplicationRecord
   has_one :supplier_contact
   has_many :quote_request, dependent: :destroy
   has_many :cold_rooms, dependent: :destroy
+  has_many :spare_parts, dependent: :destroy
 end

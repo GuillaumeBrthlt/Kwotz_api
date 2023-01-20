@@ -46,6 +46,6 @@ class ColdRoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cold_room_params
-      params.require(:cold_room).permit(:name, :temperature, :condensing_unit, :prod_outside, :refrigerant_type, :length, :width, :height, :volume, :product_types, :entries_frequency, :entries_quantity, :heat_sources_power, :heat_sources, :comment, :project_id)
+      params.require(:cold_room).permit(:name, :temperature, :entry_temperature, :condensing_unit, :prod_outside, :refrigerant_type, :length, :width, :height, :volume, :product_types, :entries_frequency, :entries_quantity, :heat_sources_power, :heat_sources, :comment, :project_id)
     end
 end

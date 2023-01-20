@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :spare_parts
   resources :quote_requests
 
   resources :cold_rooms
