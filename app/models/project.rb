@@ -5,4 +5,5 @@ class Project < ApplicationRecord
   has_many :quote_request, dependent: :destroy
   has_many :cold_rooms, dependent: :destroy
   has_many :spare_parts, dependent: :destroy
+  has_many :air_conditionnings, dependent: :destroy
 end
