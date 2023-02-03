@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :air_conditionnings
   resources :spare_parts
   resources :quote_requests
 

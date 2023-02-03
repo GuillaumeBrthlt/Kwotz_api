@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_20_100120) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_153951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_100120) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "air_conditionnings", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "name"
+    t.integer "outside_unit_type", default: 0
+    t.integer "outnbr"
+    t.integer "current_type", default: 0
+    t.integer "surface"
+    t.integer "height"
+    t.integer "volume"
+    t.string "inside_unit_type"
+    t.text "accesories"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_air_conditionnings_on_project_id"
   end
 
   create_table "cold_rooms", force: :cascade do |t|
@@ -174,6 +191,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_100120) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "air_conditionnings", "projects"
   add_foreign_key "cold_rooms", "projects"
   add_foreign_key "projects", "supplier_contacts"
   add_foreign_key "projects", "users"
