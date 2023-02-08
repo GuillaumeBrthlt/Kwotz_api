@@ -1,29 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body style='background-color: #FFFFFF; color: black'>
-      <div style="background-color: #17c1e8; height: 100px">
-        <h1 style="text-align:center; font-size:2.2em; color: white; padding: 25px;">Kwot'z </h1>
-      </div>
-      <div style="padding: 70px 20px 90px 20px;">
-        <h2>Bonjour <%= @email %>!</h2>
-        <h4>Bienvenue sur Kwot'z </h4>
-
-        <p>Pour confirmer votre incrption, veuillez cliquez sur le lien ci-dessous.</p>
-        <p style="font-style: italic;">Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer cet e-mail.</p>
-
-        <% host_url = Rails.application.credentials.mailer[:front_url]%>
-
-        <% confirmation_link = "#{host_url}confirmation?confirmation_token=#{@token}" %>
-        
-        <%= link_to confirmation_link do %>
-          <p style="text-decoration: underline; font-weight: bold; color: #344767;">Confirmer mon inscription</p>
-        <% end %>
-      </div>
-      <footer style="height: 60px; background-color: transparent; text-align: center;">
-        <p  style="text-muted">L'équipe Kwot'z.</p>
-      </footer>
-  </body>
-</html>
+<body>
+  <div style="background-color: #407BFF">
+    <div class="container">
+      <img src="http://localhost:5173/assets/images/logo.png" class ="ax-center my-10 w-32"/>
+      <h1 class="ax-center text-white text-center mb-5">Bonjour <%= @email %></h1>
+      <h2 class="ax-center text-white text-center mb-10">Bienvenue sur Kwot'z!</h2>
+      <p class="text-white text-left">Pour confirmer votre inscription, veuillez cliquer sur le bouton ci-dessous.</p>
+      <em class="text-white text-left mb-10">Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer cet email.</em>
+      <% host_url = Rails.application.credentials.mailer[:front_url]%>
+      <% confirmation_link = "#{host_url}confirmation?confirmation_token=#{@token}" %>
+      <a class="btn btn-yellow-400 rounded-full fw-800 py-4 ax-center mb-10 w-full w-lg-80" href="<%=confirmation_link%>">Confirmer mon email</a>
+    </div>
+  </div>
+  <div class="text-muted text-center my-6">
+    Cet e-mail vous à été envoyé avec l'appication Kwot'z<br>
+  </div>
+</body>

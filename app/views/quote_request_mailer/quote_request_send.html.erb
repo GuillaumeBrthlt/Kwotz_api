@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body style='background-color: #FFFFFF'>
-      <div style="background-color: #17c1e8; height: 100px">
-        <h1 style="text-align:center; font-size:2.2em; color: white; padding: 25px;">Kwot'z - demande de prix</h1>
+<body>
+  <div style="background-color: #407BFF">
+    <div class="container">
+      <%= image_tag "#{Rails.application.credentials.mailer[:front_url]}assets/images/logo.png", :class => "ax-center my-10 w-32"%>
+      <h1 class="ax-center text-white text-center mb-10">Vous avez reçu une nouvelle demande de prix</h1>
+      <div class="card bg-blue-100 mb-5">
+        <div class="container-fluid py-2 border-bottom">
+          <p class="text-secondary text-lg ax-center mb-1">de la part de:</p>
+          <p class="text-dark fw-600 ax-center text-xl"><%= @quote_request.user_profile.first_name %> <%= @quote_request.user_profile.last_name %></p>
+        </div>
+        <div class="container-fluid py-2 border-bottom">
+          <p class="text-secondary text-lg ax-center mb-1">société: </p>
+          <p class="text-dark fw-600 ax-center text-xl"><%= @quote_request.user_profile.company %></p>
+        </div>
+        <div class="container-fluid py-2">
+          <p class="text-secondary text-lg ax-center mb-1">référence du projet:</p>
+          <p class="text-dark fw-600 ax-center text-xl"><%= @quote_request.project.name %></p>
+        </div>
       </div>
-      <div style="padding: 70px 20px 90px 20px; color: black">
-        <h2>Bonjour!</h2>
-        <h4>Vous avez reçu une nouvelle demande de prix de <%= @quote_request.user_profile.first_name %> <%= @quote_request.user_profile.last_name %>, société <%= @quote_request.user_profile.company %>.</h4>
-        <%consultation_link = "#{Rails.application.credentials.mailer[:front_url]}consultation/#{@quote_request.id}"%>
-        <p>Pour accéder aux détails de cette demande de prix et transmettre votre devis, veuillez cliquer sur le lien ci-dessous: </p>
-        <%= link_to consultation_link do %>
-          <p style="text-decoration: underline; font-weight: bold; color: #344767;">
-            Accéder à la demande de prix
-          </p>
-        <% end %>
-      </div>
-      <footer style="height: 60px; background-color: transparent; text-align: center;">
-        <p>Cet email vous a été envoyé avec l'application Kwot'z.</p>
-      </footer>
-  </body>
-</html>
+      <p class="ax-center lh-lg text-white text-center text-2xl mb-10">
+		    Vous pouvez accéder à cette demande de prix et transmettre votre devis en cliquant sur le bouton ci-dessous.
+      </p>
+      <%consultation_link = "#{Rails.application.credentials.mailer[:front_url]}consultation/#{@quote_request.id}"%>
+      <a class="btn btn-yellow-300 rounded-full fw-800 py-4 ax-center mb-10 w-full w-lg-80" href="<%=consultation_link%>">Accéder à la demande de prix</a>
+    </div>
+  </div>
+  <div class="text-muted text-center my-6">
+    Cet e-mail vous à été envoyé avec l'appication Kwot'z<br>
+  </div>
+</body>
