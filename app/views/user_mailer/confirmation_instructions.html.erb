@@ -1,8 +1,8 @@
 <body>
   <div style="background-color: #407BFF">
     <div class="container">
-      <img src="http://localhost:5173/assets/images/logo.png" class ="ax-center my-10 w-32"/>
-      <h1 class="ax-center text-white text-center mb-5">Bonjour <%= @email %></h1>
+      <img src="<%=Rails.application.credentials.mailer[:front_url]%>assets/images/logo.png" class ="ax-center my-10 w-32"/>
+      <h1 class="ax-center text-white text-center mb-5">Bonjour,</h1>
       <h2 class="ax-center text-white text-center mb-10">Bienvenue sur Kwot'z!</h2>
       <p class="text-white text-left">Pour confirmer votre inscription, veuillez cliquer sur le bouton ci-dessous.</p>
       <em class="text-white text-left mb-10">Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer cet email.</em>
