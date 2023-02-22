@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = current_user.projects
 
-    render json: @projects, :include => :cold_rooms
+    render json: @projects, :include => [:cold_rooms, :air_conditionnings, :spare_parts, :quote_requests]
   end
 
   # GET /projects/1
