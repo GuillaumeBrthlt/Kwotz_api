@@ -7,7 +7,7 @@
       <p class="text-white text-left">Pour confirmer votre inscription, veuillez cliquer sur le bouton ci-dessous.</p>
       <em class="text-white text-left mb-10">Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer cet email.</em>
       <% host_url = Rails.application.credentials.mailer[:front_url]%>
-      <% confirmation_link = "#{host_url}/register/confirmation?confirmation_token=#{@token}" %>
+      <% confirmation_link = "#{host_url}register/confirmation?confirmation_token=#{@token}" %>
       <a class="btn btn-yellow-400 rounded-full fw-800 py-4 ax-center mb-10 w-full w-lg-80" href="<%=confirmation_link%>">Confirmer mon email</a>
     </div>
   </div>
