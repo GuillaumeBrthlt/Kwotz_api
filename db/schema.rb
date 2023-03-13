@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_153951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "air_conditionnings", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "name"
+    t.integer "outside_unit_type", default: 0
+    t.integer "outnbr"
+    t.integer "current_type", default: 0
+    t.integer "surface"
+    t.integer "height"
+    t.integer "volume"
+    t.string "inside_unit_type"
+    t.text "accesories"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_air_conditionnings_on_project_id"
+  end
+
   create_table "cold_rooms", force: :cascade do |t|
     t.integer "temperature"
     t.string "condensing_unit"
@@ -61,6 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "entry_temperature"
     t.index ["project_id"], name: "index_cold_rooms_on_project_id"
   end
 
@@ -91,7 +109,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
     t.datetime "updated_at", null: false
     t.boolean "response_status", default: false
     t.text "response_comment"
+    t.boolean "read", default: false
+    t.datetime "received_at"
     t.index ["project_id"], name: "index_quote_requests_on_project_id"
+  end
+
+  create_table "spare_parts", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "brand"
+    t.string "name"
+    t.string "reference"
+    t.integer "quantity"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_spare_parts_on_project_id"
   end
 
   create_table "supplier_contacts", force: :cascade do |t|
@@ -101,6 +133,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone"
+    t.string "adress"
+    t.string "city"
+    t.string "zipcode"
     t.index ["supplier_id"], name: "index_supplier_contacts_on_supplier_id"
   end
 
@@ -155,10 +191,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_160357) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "air_conditionnings", "projects"
   add_foreign_key "cold_rooms", "projects"
   add_foreign_key "projects", "supplier_contacts"
   add_foreign_key "projects", "users"
   add_foreign_key "quote_requests", "projects"
+  add_foreign_key "spare_parts", "projects"
   add_foreign_key "supplier_contacts", "suppliers"
   add_foreign_key "suppliers", "users"
   add_foreign_key "user_profiles", "users"

@@ -4,6 +4,8 @@ class QuoteRequest < ApplicationRecord
   has_one :user_profile, through: :user
   has_many_attached :document, dependent: :delete_all
   has_many :cold_rooms, through: :project
+  has_many :spare_parts, through: :project
+  has_many :air_conditionnings, through: :project
   after_create :send_mail
   after_update :mail_document
   after_create :update_project
@@ -17,7 +19,7 @@ class QuoteRequest < ApplicationRecord
   end
 
   def mail_document
-    if self.response_status
+    if self.response_status && !self.read
       user = self.user
       QuoteRequestMailer.document_attached_send(user, self).deliver_now
     end
