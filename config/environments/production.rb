@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.routes.default_url_options = {
-  host: 'https://kwotz-api.fly.dev/'
+  host: 'https://app-kwotz-api.fly.dev/'
 }
 
 Rails.application.configure do
@@ -88,6 +88,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
-  config.action_mailer.default_url_options = {:host => 'https://kwotz-api.fly.dev/'}
+  config.action_mailer.default_url_options = {:host => 'https://app-kwotz-api.fly.dev/'}
   config.action_mailer.delivery_method = :mailjet
 end
