@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://www.kwot-z.fr'
+    origins Rails.application.credentials.mailer[:front_url]
 
     resource '*',
              headers: :any,
